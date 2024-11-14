@@ -1,13 +1,12 @@
-package com.teufelium.circuitsample.screen.presenter
+package com.teufelium.circuitsample.feature.home
 
 import androidx.compose.runtime.Composable
 import com.slack.circuit.runtime.CircuitContext
 import com.slack.circuit.runtime.Navigator
 import com.slack.circuit.runtime.presenter.Presenter
 import com.slack.circuit.runtime.screen.Screen
-import com.teufelium.circuitsample.Repository
-import com.teufelium.circuitsample.screen.DetailScreen
-import com.teufelium.circuitsample.screen.ListScreen
+import com.teufelium.circuitsample.repository.Repository
+import com.teufelium.circuitsample.feature.detail.DetailScreen
 
 class ListPresenter(
     private val navigator: Navigator,

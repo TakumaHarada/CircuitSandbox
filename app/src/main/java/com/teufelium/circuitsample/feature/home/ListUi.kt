@@ -1,9 +1,10 @@
-package com.teufelium.circuitsample.screen.ui
+package com.teufelium.circuitsample.feature.home
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
@@ -17,8 +18,25 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.teufelium.circuitsample.screen.ListScreen
+import com.slack.circuit.runtime.CircuitContext
+import com.slack.circuit.runtime.screen.Screen
+import com.slack.circuit.runtime.ui.Ui
+import com.slack.circuit.runtime.ui.ui
 import com.teufelium.circuitsample.entity.Item
+import com.teufelium.circuitsample.ui.IconImage
+
+class ListUiFactory: Ui.Factory {
+    override fun create(screen: Screen, context: CircuitContext): Ui<*>? {
+        return when(screen) {
+            is ListScreen -> listUi()
+            else -> null
+        }
+    }
+
+    private fun listUi() = ui<ListScreen.State> { state, modifier ->
+        ListUi(state, modifier)
+    }
+}
 
 @Composable
 fun ListUi(
@@ -34,7 +52,8 @@ fun ListUi(
         }
     ) { innerPadding ->
         LazyColumn(
-            modifier = Modifier.padding(innerPadding)
+            modifier = Modifier
+                .padding(innerPadding)
         )
         {
             items(state.items) { item ->
@@ -51,14 +70,15 @@ fun ListUi(
 
 @Composable
 private fun NewsItem(
+    modifier: Modifier = Modifier,
     item: Item,
-    onClick: () -> Unit = {},
-    modifier: Modifier = Modifier
+    onClick: () -> Unit = {}
 ) {
     Row(
         modifier = modifier
-            .padding(16.dp)
+            .fillMaxWidth()
             .clickable { onClick() }
+            .padding(16.dp)
     ) {
         IconImage(
             url = item.icon,

@@ -1,4 +1,4 @@
-package com.teufelium.circuitsample.screen.ui
+package com.teufelium.circuitsample.ui
 
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.runtime.Composable

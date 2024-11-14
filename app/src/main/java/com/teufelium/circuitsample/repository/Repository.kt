@@ -1,4 +1,4 @@
-package com.teufelium.circuitsample
+package com.teufelium.circuitsample.repository
 
 import com.teufelium.circuitsample.entity.Item
 

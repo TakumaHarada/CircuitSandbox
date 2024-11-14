@@ -1,4 +1,4 @@
-package com.teufelium.circuitsample.screen.ui
+package com.teufelium.circuitsample.feature.detail
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -21,7 +21,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.teufelium.circuitsample.entity.Item
-import com.teufelium.circuitsample.screen.DetailScreen
+import com.teufelium.circuitsample.ui.IconImage
 
 
 @Composable
@@ -52,9 +52,9 @@ fun DetailUi(
                     IconImage(
                         url = state.item.icon,
                         modifier = Modifier
-                            .padding(16.dp)
-                            .width(60.dp)
-                            .height(60.dp)
+                            .width(100.dp)
+                            .height(100.dp)
+                            .padding(0.dp, 0.dp, 16.dp, 16.dp)
                     )
                     Column {
                         Text(

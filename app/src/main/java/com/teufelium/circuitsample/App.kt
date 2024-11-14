@@ -2,12 +2,10 @@ package com.teufelium.circuitsample
 
 import android.app.Application
 import com.slack.circuit.foundation.Circuit
-import com.teufelium.circuitsample.screen.DetailScreen
-import com.teufelium.circuitsample.screen.presenter.ListPresenter
-import com.teufelium.circuitsample.screen.ListScreen
-import com.teufelium.circuitsample.screen.presenter.DetailPresenter
-import com.teufelium.circuitsample.screen.ui.DetailUi
-import com.teufelium.circuitsample.screen.ui.ListUi
+import com.teufelium.circuitsample.circuit.core.factory.PresenterFactory
+import com.teufelium.circuitsample.circuit.core.factory.UiFactory
+import com.teufelium.circuitsample.repository.Repository
+import com.teufelium.circuitsample.repository.RepositoryImpl
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import org.koin.dsl.module
@@ -33,14 +31,8 @@ val modules = module {
 
     single<Circuit> {
         Circuit.Builder()
-            .addPresenterFactory(ListPresenter.Factory(get()))
-            .addPresenterFactory(DetailPresenter.Factory(get()))
-            .addUi<ListScreen, ListScreen.State> { state, modifier ->
-                ListUi(state, modifier)
-            }
-            .addUi<DetailScreen, DetailScreen.State> { state, modifier ->
-                DetailUi(state, modifier)
-            }
+            .addPresenterFactory(PresenterFactory(get()))
+            .addUiFactory(UiFactory())
             .build()
     }
 }

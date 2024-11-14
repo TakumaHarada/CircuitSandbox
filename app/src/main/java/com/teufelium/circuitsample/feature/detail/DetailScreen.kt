@@ -1,4 +1,4 @@
-package com.teufelium.circuitsample.screen
+package com.teufelium.circuitsample.feature.detail
 
 import com.slack.circuit.runtime.CircuitUiEvent
 import com.slack.circuit.runtime.CircuitUiState

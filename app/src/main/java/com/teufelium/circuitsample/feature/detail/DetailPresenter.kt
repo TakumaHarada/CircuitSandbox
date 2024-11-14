@@ -1,12 +1,11 @@
-package com.teufelium.circuitsample.screen.presenter
+package com.teufelium.circuitsample.feature.detail
 
 import androidx.compose.runtime.Composable
 import com.slack.circuit.runtime.CircuitContext
 import com.slack.circuit.runtime.Navigator
 import com.slack.circuit.runtime.presenter.Presenter
 import com.slack.circuit.runtime.screen.Screen
-import com.teufelium.circuitsample.Repository
-import com.teufelium.circuitsample.screen.DetailScreen
+import com.teufelium.circuitsample.repository.Repository
 
 class DetailPresenter(
     private val screen: DetailScreen,
@@ -21,7 +20,7 @@ class DetailPresenter(
             event = { event ->
                 when(event) {
                     DetailScreen.Event.BackClicked -> {
-                        navigator.pop()
+                        navigator.pop(result = null)
                     }
                 }
             }
